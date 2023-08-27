@@ -1,6 +1,6 @@
 from django.conf import settings
 from django.urls import  path
-from .views import ProjectDeleteView, ProjectUpdateView, UserDeleteView, UserUpdateView, add_project, add_subject, register, Customlogin, home_admin, home_teacher
+from .views import ProjectDeleteView, ProjectUpdateView, UserDeleteView, UserUpdateView, add_project, add_subject, home_student, register, Customlogin, home_admin, home_teacher
 from django.conf.urls.static import static
 
 urlpatterns = [
@@ -9,6 +9,7 @@ urlpatterns = [
     path("", Customlogin, name="login_page"),
     path("home_admin", home_admin, name="home_admin"),
     path("home_teacher", home_teacher , name="home_teacher"),
+    path("home_student", home_student, name="home_student"),
     path("home_teacher/add_project", add_project, name="add_project"),
     path("home_admin/add_subject", add_subject, name="add_subject"),
     path('<int:pk>/update/', ProjectUpdateView.as_view(), name='project_update'), # met à jour un projet existant

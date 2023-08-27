@@ -18,6 +18,10 @@ def home_teacher(request):
     projects = Project.objects.all()
     context = {'projects': projects }
     return render(request, "home_teacher.html",context)
+def home_student(request):
+    projects = Project.objects.all()
+    context = {'projects': projects }
+    return render(request, "home_student.html",context)
 class ProjectUpdateView(UpdateView):
     model = Project # utilise le modèle Project
     template_name = 'project_form.html' # utilise le même template que pour la création
@@ -97,7 +101,7 @@ def Customlogin(request):
             if user is not None:
                 login(request, user)
                 if user.role == CustomUser.STUDENT:
-                    return HttpResponseRedirect('')
+                    return HttpResponseRedirect('home_sudent')
                 elif user.role == CustomUser.TEACHER:
                     return HttpResponseRedirect('home_teacher')
                 elif user.role == CustomUser.ADMIN:
@@ -125,6 +129,7 @@ def add_project(request):
             form.save() # enregistre un nouveau projet dans la base de données
             return redirect('home_teacher') # redirige vers la page d'accueil
     else:
+        print("erreur")
         form = ProjectForm()
     return render(request, 'add_project.html', {'form': form})
 def add_subject(request):
