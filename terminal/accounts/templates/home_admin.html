@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Dashboard Admin</div>
+            </div>
+        </div>
+    </div>
+<!--La partie qui permet de creer des utilisateurs-->
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h2 class="panel-title">Ajuoter un utilisateur  </h2>
+                </div>
+                <div class="panel-body">
+                    <form method="post" action="{% url 'register_page' %}" class="form-horizontal">
+                        {% csrf_token %} {{ form.as_p }}
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Ajouter un utiliteur</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+<!-- Partie qui permet d'ajouter des cours-->
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h2 class="panel-title">Ajouter un cours  </h2>
+                </div>
+                <div class="panel-body">
+                    <form method="post" action="{% url 'add_subject' %}" class="form-horizontal">
+                        {% csrf_token %} {{ form.as_p }}
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Ajouter un cours</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+<!-- tableau qui affiche la liste des projets-->
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 class="panel-title">Liste des projets/devoirs</h2>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Titre</th>
+                                <th>Matière</th>
+                                <th>fichier</th>
+                                <th>Statut</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for project in projects %}
+                            <tr>
+                                <td>{{ project.title }}</td>
+                                <td>{{ project.subject }}</td>
+                                <td><a href="{{project.file.url}}"><i class="fa fa-download"></i>{{project.file}}</a>
+                                <td>{{ project.get_status_display }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+<!-- tableau qui affiche la liste des users-->
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 class="panel-title">Liste des utilisateur</h2>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Nom</th>
+                                <th>Prenom</th>
+                                <th>Numero ID</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for Customuser in users %}
+                            <tr>
+                                <td>{{ Customuser.first_name }}</td>
+                                <td>{{ Customuser.last_name }}</td>
+                                <td>{{ Customuser.id_number }}</td>
+                                <td>
+                                    <a href="{% url 'user_update' Customuser.id %}"
+                                        class="btn btn-warning btn-sm">Modifier</a>
+                                    <a href="{% url 'user_delete' Customuser.id %}"
+                                        class="btn btn-danger btn-sm">Supprimer</a>
+                                </td>
+                            </tr>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

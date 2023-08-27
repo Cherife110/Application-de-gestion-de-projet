@@ -1,0 +1,61 @@
+{% extends 'base.html' %} {% block content %}
+<div class="jumbotron">
+    <h1 class="text-center">Bienvenue sur la page d'accueil des enseignants</h1>
+    <p class="lead text-center">
+        Sur cette page, vous pouvez créer, modifier, consulter et évaluer les
+        projets et devoirs de vos étudiants.
+    </p>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h2 class="panel-title">Créer un projet/devoir</h2>
+            </div>
+            <div class="panel-body">
+                <form method="post" action="{% url 'add_project' %}" class="form-horizontal">
+                    {% csrf_token %} {{ form.as_p }}
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Créer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title">Liste des projets/devoirs</h2>
+            </div>
+            <div class="panel-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Titre</th>
+                            <th>Matière</th>
+                            <th>Statut</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for project in projects %}
+                        <tr>
+                            <td>{{ project.title }}</td>
+                            <td>{{ project.subject }}</td>
+                            <td>{{ project.get_status_display }}</td>
+                            <td>
+                                <a href="{% url 'project_update' project.id %}"
+                                    class="btn btn-warning btn-sm">Modifier</a>
+                                <a href="{% url 'project_delete' project.id %}"
+                                    class="btn btn-danger btn-sm">Supprimer</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

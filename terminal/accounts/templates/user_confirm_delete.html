@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h1 class="panel-title">Confirmer la suppression de cet utilisateur {{ object.username }}</h1>
+                <h3>Êtes-vous sûr de vouloir supprimer ce utilisateur ? Cette action est irréversible.</h3>
+            </div>
+            <div class="panel-body">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Confirmer</button>
+                        <a href="{% url 'home_admin' %}" class="btn btn-primary">Annuler</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

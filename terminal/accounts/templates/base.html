@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Gestion de projet</title>
+   
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #1E352F; /* Couleur verte de fond */
+            font-family: 'Arial', sans-serif;
+        }
+        .navbar {
+            background-color: #255C4E; /* Couleur verte plus foncée pour la barre de navigation */
+        }
+        .navbar-brand, .navbar-nav > li > a {
+            color: #FFD700; /* Couleur jaune pour les liens dans la barre de navigation */
+        }
+        .well {
+            background-color: #D3A625; /* Couleur jaune pour le fond du footer */
+            color: #1E352F; /* Couleur de police foncée pour le footer */
+        }
+        .btn {
+            background-color: #FFD700; /* Couleur jaune pour les boutons */
+            border-color: #FFD700;
+            color: #1E352F; /* Couleur de police foncée pour les boutons */
+        }
+    </style>
+</head>
+<body class="override">
+    <nav class="navbar navbar-inverse" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">My moodle</a>
+            </div>
+        </div>
+    </nav>
+   
+    <div class="container">
+        <div class="row">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+   
+    <footer>
+        <div class="container">
+            <div class="row well ml-t">
+                <div class="col-lg-4 col-md-4">
+                    <p class="m-t">Reggae Vibes &copy; 2023</p>
+                    <p>All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
