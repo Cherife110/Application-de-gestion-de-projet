@@ -101,7 +101,7 @@ class Project(models.Model):
 
     title = models.CharField(max_length=200) # Intitulé du projet/devoir
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE) # Matière liée au projet/devoir
-    file = models.FileField(upload_to='projects/') # Fichier contenant le projet/devoir
+    file = models.FileField(upload_to='media/') # Fichier contenant le projet/devoir
     status = models.CharField(max_length=2, choices=STATUS_CHOICES, default='EN') # Statut du projet/devoir
     feedback = models.TextField(blank=True) # Avis/notes donnés par l'instructeur
 

@@ -104,11 +104,11 @@ def Customlogin(request):
             if user is not None:
                 login(request, user)
                 if user.role == CustomUser.STUDENT:
-                    return HttpResponseRedirect('home_sudent')
+                    return redirect('home_sudent')
                 elif user.role == CustomUser.TEACHER:
-                    return HttpResponseRedirect('home_teacher')
+                    return redirect('home_teacher')
                 elif user.role == CustomUser.ADMIN:
-                    return HttpResponseRedirect('home_admin')
+                    return redirect('home_admin')
             else:
                 return render(request, template, {
                     'form': form,
