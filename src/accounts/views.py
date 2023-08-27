@@ -2,8 +2,10 @@ from django.shortcuts import redirect, render
 from django.http import HttpResponseRedirect
 from .forms import ProjectForm, RegisterForm, LoginForm, SubjectForm
 from .models import CustomUser, PreviousProject, Project, Subject 
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required # importez le décorateur
 from django.views.generic import UpdateView, DeleteView
+
 
 # Create your views here.
 def index(request):
@@ -18,6 +20,7 @@ def home_teacher(request):
     projects = Project.objects.all()
     context = {'projects': projects }
     return render(request, "home_teacher.html",context)
+
 def home_student(request):
     projects = Project.objects.all()
     context = {'projects': projects }
@@ -114,6 +117,10 @@ def Customlogin(request):
     else:
         form = LoginForm()
     return render(request, template, {'form': form})
+def logout_view(request):
+    logout(request) # appelez la fonction logout
+    return redirect('/') # redirigez vers la page d'accueil
+
 
 # Vue pour afficher la liste des projets archivés
 def archived_project_list(request):

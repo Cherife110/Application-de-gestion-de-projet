@@ -1,12 +1,13 @@
 from django.conf import settings
 from django.urls import  path
-from .views import ProjectDeleteView, ProjectUpdateView, UserDeleteView, UserUpdateView, add_project, add_subject, home_student, register, Customlogin, home_admin, home_teacher
+from .views import ProjectDeleteView, ProjectUpdateView, UserDeleteView, UserUpdateView, add_project, add_subject, home_student, logout_view, register, Customlogin, home_admin, home_teacher
 from django.conf.urls.static import static
 
 urlpatterns = [
     #path("", index,name="home"),
     path("home_admin/register", register, name="register_page"),
     path("", Customlogin, name="login_page"),
+    path('logout/', logout_view, name='logout'), # associez l'URL à la vue
     path("home_admin", home_admin, name="home_admin"),
     path("home_teacher", home_teacher , name="home_teacher"),
     path("home_student", home_student, name="home_student"),
