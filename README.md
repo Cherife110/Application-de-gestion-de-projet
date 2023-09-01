@@ -11,8 +11,4 @@ commande: << python -m venv .env >>
 << py manage.py runserver>>
 # Les coordonnees du super user:
  id = 2002
- mor\t de passe = !@#$%^&*
- # Coordonnee d'un eleve 
- Prénom:Malia
-N° Etudiant ou enseignant: 12
-Mot de passe : !@#$%^&*
+ mort de passe = !@#$%^&*
