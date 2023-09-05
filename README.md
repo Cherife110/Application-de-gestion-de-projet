@@ -11,8 +11,12 @@ commande: << python -m venv .env >>
 << py manage.py runserver>>
 # Les coordonnees du super user: Peut se connecter en tant qu'admin
  id = 2002
+<<<<<<< HEAD
  mot de passe = !@#$%^&*
  # Coordonnee d'un eleve 
  Prénom:Malia
 N° Etudiant ou enseignant: 12
 Mot de passe : !@#$%^&*
+=======
+ mort de passe = !@#$%^&*
+>>>>>>> 04df7b2cf355678f449115e7a479e03f650db74a
