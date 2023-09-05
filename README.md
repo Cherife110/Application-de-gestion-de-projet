@@ -9,9 +9,9 @@ commande: << python -m venv .env >>
 # Copier le dossier de l'application dans le meme dossier que le .env
 # ouvrir le dessier de l'application et la demarrer avec la commande : 
 << py manage.py runserver>>
-# Les coordonnees du super user:
+# Les coordonnees du super user: Peut se connecter en tant qu'admin
  id = 2002
- mor\t de passe = !@#$%^&*
+ mot de passe = !@#$%^&*
  # Coordonnee d'un eleve 
  Prénom:Malia
 N° Etudiant ou enseignant: 12

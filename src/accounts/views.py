@@ -82,6 +82,7 @@ def register(request):
                     password=form.cleaned_data['password'],
                     role=form.cleaned_data['role'],
                 )
+                form.save()
 
                
                 # redirect to accounts page:
@@ -89,6 +90,7 @@ def register(request):
 
    # No post data availabe, let's just show the page.
     else:
+        print("New user created:", user.__dict__)
         form = RegisterForm()
 
     return render(request, template, {'form': form})
