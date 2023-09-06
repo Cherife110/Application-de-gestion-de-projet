@@ -82,9 +82,7 @@ def register(request):
                     password=form.cleaned_data['password'],
                     role=form.cleaned_data['role'],
                 )
-                form.save()
 
-               
                 # redirect to accounts page:
                 return redirect('home_admin')
 
